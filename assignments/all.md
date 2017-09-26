@@ -107,6 +107,14 @@ Stopped containers aren't automatically removed, so you can restart them if you 
 docker restart webserver
 ```
 
+This effectively starts the container *in the background*. You can "attach" your terminal to it (i.e. show its output and make it accept your input):
+
+```bash
+docker attach webserver
+```
+
+If you refresh `http://localhost`, a new line should appear on your screen.
+
 If you want to run the `webserver` container again, with different options and arguments, you first have to remove it:
 
 ```bash
@@ -159,6 +167,8 @@ Let's start it:
 docker run --name redis -d redis:3.2
 ```
 
+We add the `-d` flag to make Redis start in the background (we don't need to provide interactive input, or read its output right now).
+
 To be able to use it in a PHP application, we can install the [`redis` PECL extension](https://github.com/phpredis/phpredis). Add the following lines to `docker/webserver/Dockerfile` to install this extension in the `webserver` image. The best place for these lines is *right after the line starting with `FROM`*:
 
 ```docker
@@ -174,7 +184,7 @@ docker build -t my_webserver -f docker/webserver/Dockerfile ./
 
 You should see the `redis` extension being installed in the container image.
 
-To be able to connect to the `redis` container using its host name, we should *link* the the `redis` container to the `webserver` container, using the `-d` option:
+To be able to connect to the `redis` container using its host name, we should *link* the the `redis` container to the `webserver` container, using the `--link` option:
 
 ```bash
 docker run \
