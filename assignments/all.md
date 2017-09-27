@@ -289,3 +289,31 @@ docker pull matthiasnoback/my_webserver
 ```
 
 The image will be downloaded and you can start using it again to run a container based on it.
+
+# Use your own hosted registry
+
+Instead of pushing images to Docker Hub, you could also host your own image registry. First, run:
+
+```bash
+docker run -d -p 5000:5000 --restart=always --name registry registry
+```
+
+The registry is still empty at this point. If you want to push images to it, you need to tag them first, e.g.:
+
+```bash
+docker tag matthiasnoback/my_webserver localhost:5000/matthiasnoback/my_webserver
+docker push localhost:5000/matthiasnoback/my_webserver
+```
+
+You can also push official images you've previously pulled to your local registry:
+
+```bash
+docker tag redis localhost:5000/redis
+docker push localhost:5000/redis
+```
+
+From now on you can pull and run images from the self-hosted registry. Don't forget to add the location of the registry (i.e. `localhost:5000`):
+
+```bash
+docker run -d --name redis localhost:5000/redis
+``` 
