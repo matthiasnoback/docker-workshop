@@ -299,7 +299,7 @@ The image will be downloaded and you can start using it again to run a container
 Instead of pushing images to Docker Hub, you could also host your own image registry. First, run:
 
 ```bash
-docker run -d -p 5000:5000 --restart=always --name registry registry
+docker run -d -p 5000:5000 --restart=always --name registry registry:2
 ```
 
 The registry is still empty at this point. If you want to push images to it, you need to tag them first, e.g.:
@@ -308,6 +308,8 @@ The registry is still empty at this point. If you want to push images to it, you
 docker tag matthiasnoback/my_webserver localhost:5000/matthiasnoback/my_webserver
 docker push localhost:5000/matthiasnoback/my_webserver
 ```
+
+You'll find that you won't be able to push images to your "insecure" registry. You can configure which registries are allowed by clicking on the Docker Whale icon, going to `Preferences`, `Daemon` and adding `localhost:5000` as an insecure registry. After applying and restarting, you should be able to push the image after all. For Linux you might have to [restart the Docker daemon with an extra flag](https://docs.docker.com/engine/reference/commandline/dockerd/), or modify the Daemon's configuration file.
 
 You can also push official images you've previously pulled to your local registry:
 
