@@ -46,7 +46,7 @@ Now try `ps aux`.
 
 We'll start an Apache web server.
 
-We use the [official `php` image](https://hub.docker.com/_/php/) for it. You can run a specific version of an image by adding for example `:7.1-apache` to the name of the image.
+We use the [official `php` image](https://hub.docker.com/_/php/) for it. Pick one that includes Apache. You can run a specific version of an image by adding a tag to the name of the image, for example `php:7.1-apache`.
 
 Try running the image. It will start up the web server that listens at port 80. However, currently we can't reach it. Press `Ctrl + C` to stop the container. 
  
