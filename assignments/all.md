@@ -115,6 +115,8 @@ docker attach webserver
 
 If you refresh `http://localhost`, a new line should appear on your screen.
 
+To detach without stopping the webserver, type `Ctrl + P` then `Ctrl + Q`.
+
 If you want to run the `webserver` container again, with different options and arguments, you first have to remove it:
 
 ```bash
@@ -122,6 +124,8 @@ docker rm webserver
 ```
 
 Add `-f` if the container is still running (or stop it first).
+
+To let automatically remove a container after it has stopped, you could simply add the `--rm` flag to the `docker run` command. 
 
 ## Logging
 
