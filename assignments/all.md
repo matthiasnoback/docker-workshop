@@ -180,6 +180,8 @@ RUN pecl install redis
 RUN docker-php-ext-enable redis
 ```
 
+Also, uncomment the lines in `web/index.php` which make the actual connection to Redis.
+
 Then rebuild the image:
 
 ```bash
