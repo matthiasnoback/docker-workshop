@@ -318,6 +318,8 @@ docker tag redis localhost:5000/redis
 docker push localhost:5000/redis
 ```
 
+Use the registry's HTTP API to find out which repositories and tags are currently known to it. You'll find the available endpoints listed in the documentation of the [HTTP API V2](https://docs.docker.com/registry/spec/api/). E.g. open `http://localhost:5000/v2/_catalog` in your browser. 
+
 From now on you can pull and run images from the self-hosted registry. Don't forget to add the location of the registry (i.e. `localhost:5000`):
 
 ```bash
