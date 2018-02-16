@@ -107,16 +107,6 @@ Stopped containers aren't automatically removed, so you can restart them if you 
 docker restart webserver
 ```
 
-This effectively starts the container *in the background*. You can "attach" your terminal to it (i.e. show its output and make it accept your input):
-
-```bash
-docker attach webserver
-```
-
-If you refresh `http://localhost`, a new line should appear on your screen.
-
-To detach without stopping the webserver, type `Ctrl + P` then `Ctrl + Q`.
-
 If you want to run the `webserver` container again, with different options and arguments, you first have to remove it:
 
 ```bash
