@@ -185,7 +185,6 @@ To be able to connect to the `redis` container using its host name, we should *l
 ```bash
 docker run \
     -p 80:80 \
-    -v `pwd`/web:/var/www/html \
     -d \
     --link redis \
     --name webserver \
